@@ -13,6 +13,9 @@ const Navbar = () => {
       <li>
         <Link to="/">Products</Link>
       </li>
+      <li>
+        <Link to="/blogs">Blogs</Link>
+      </li>
     </>
   );
   return (
@@ -42,9 +45,12 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <Link className="btn btn-ghost uppercase text-xl animate-pulse" to="/">
+        <Link className="btn btn-ghost uppercase text-xl" to="/">
           Wish Boat
         </Link>
+      </div>
+      <div className="navbar-center btn btn-ghost text-xl animate-pulse">
+        <h2 className="hidden normal-case lg:flex text-sm text-yellow-300">Offers!</h2>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
