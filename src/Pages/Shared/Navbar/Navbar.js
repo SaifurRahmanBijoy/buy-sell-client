@@ -42,7 +42,7 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <Link className="btn btn-ghost normal-case text-xl" to="/">
+        <Link className="btn btn-ghost uppercase text-xl animate-pulse" to="/">
           Wish Boat
         </Link>
       </div>
