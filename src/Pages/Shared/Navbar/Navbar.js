@@ -50,7 +50,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center btn btn-ghost text-xl animate-pulse">
-        <h2 className="hidden normal-case lg:flex text-sm text-yellow-300">Offers!</h2>
+        <h2 className="hidden normal-case lg:flex text-sm text-yellow-300">Offers on laptops!</h2>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
