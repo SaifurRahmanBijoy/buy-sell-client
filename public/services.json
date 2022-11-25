@@ -9,7 +9,9 @@
         "location": "4992 North Avenue Hallam, NE 68368",
         "resalePrice": "560",
         "orgPrice": "1099",
-        "used": "5 Months"
+        "used": "5 Months",
+        "post-time":"7 october,2022",
+        "seller": "Saifur Rahman"
       },
       {
         "name": "Apple MacBook Air (2020)",
@@ -17,7 +19,9 @@
         "location": "4992 North Avenue Hallam, NE 68368",
         "resalePrice": "339",
         "orgPrice": "899",
-        "used": "1.5 Years"
+        "used": "1.5 Years",
+        "post-time":"21 october,2022",
+        "seller": "Saifur Rahman"
       }
     ]
   },
@@ -31,7 +35,9 @@
         "location": "4992 North Avenue Hallam, NE 68368",
         "resalePrice": "299",
         "orgPrice": "699",
-        "used": "1 Years"
+        "used": "1 Years",
+        "post-time":"12 october,2022",
+        "seller": "Saifur Rahman"
       },
       {
         "name": "ASUS F571",
@@ -39,7 +45,9 @@
         "location": "4992 North Avenue Hallam, NE 68368",
         "resalePrice": "329",
         "orgPrice": "799",
-        "used": "1.1 Years"
+        "used": "1.1 Years",
+        "post-time":"17 october,2022",
+        "seller": "Saifur Rahman"
       }
     ]
   },
@@ -53,7 +61,9 @@
         "location": "4992 North Avenue Hallam, NE 68368",
         "resalePrice": "299",
         "orgPrice": "789",
-        "used": "1.3 Years"
+        "used": "1.3 Years",
+        "post-time":"2 october,2022",
+        "seller": "Saifur Rahman"
       },
       {
         "name": "Dell Latitude 7280",
@@ -61,7 +71,9 @@
         "location": "4992 North Avenue Hallam, NE 68368",
         "resalePrice": "312",
         "orgPrice": "588",
-        "used": "1.1 Years"
+        "used": "1.1 Years",
+        "post-time":"22 october,2022",
+        "seller": "Saifur Rahman"
       }
     ]
   }
