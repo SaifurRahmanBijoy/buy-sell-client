@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Product = ({ product }) => {
+const Product = ({ product, setProduct }) => {
   const {
     img,
     name,
@@ -16,8 +16,11 @@ const Product = ({ product }) => {
     <div>
       <div className="overflow-hidden rounded-lg shadow-2xl bg-gray-800 w-11/12 mx-auto">
         <div>
-        <img className="object-fit w-full bg-gradient-to-r from-slate-500 to-slate-900" src={img} alt="product" />
-
+          <img
+            className="object-fit w-full bg-gradient-to-r from-slate-500 to-slate-900"
+            src={img}
+            alt="product"
+          />
         </div>
 
         <div className="p-6">
@@ -57,9 +60,13 @@ const Product = ({ product }) => {
             </div>
           </div>
           <div className="my-3">
-            <Link className="btn btn-info btn-md w-full rounded-sm">
+            <label
+              className="btn btn-info btn-md w-full rounded-sm"
+              htmlFor="booking-modal"
+              onClick={() => setProduct(product)}
+            >
               Buy Now
-            </Link>
+            </label>
           </div>
         </div>
       </div>
