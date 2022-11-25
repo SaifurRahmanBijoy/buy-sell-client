@@ -19,15 +19,12 @@ const Product = ({ product }) => {
 
         <div className="p-6">
           <div>
+            <p className="mt-2 text-2xl flex font-semibold items-center transition-colors duration-300 transform text-white">
+              {name}
+            </p>
             <span className="text-xs font-medium text-blue-600  dark:text-blue-400">
               Resale: ${resalePrice} | Original Price: ${orgPrice}
             </span>
-            <Link
-              className="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline"
-              role="link"
-            >
-              {name}
-            </Link>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               This product is used for: {used}
             </p>
@@ -55,6 +52,11 @@ const Product = ({ product }) => {
                 {location}
               </span>
             </div>
+          </div>
+          <div className="my-3">
+            <Link className="btn btn-info btn-md w-full rounded-sm">
+              Buy Now
+            </Link>
           </div>
         </div>
       </div>
