@@ -14,8 +14,11 @@ const Product = ({ product }) => {
   } = product;
   return (
     <div>
-      <div className="overflow-hidden rounded-lg shadow-md bg-gray-800 w-11/12 mx-auto">
-        <img className="object-fit w-full" src={img} alt="product" />
+      <div className="overflow-hidden rounded-lg shadow-2xl bg-gray-800 w-11/12 mx-auto">
+        <div>
+        <img className="object-fit w-full bg-gradient-to-r from-slate-500 to-slate-900" src={img} alt="product" />
+
+        </div>
 
         <div className="p-6">
           <div>
