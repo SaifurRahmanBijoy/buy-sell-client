@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const useToken = (email) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [token, setToken] = useState("");
   useEffect(() => {
     if (email) {
