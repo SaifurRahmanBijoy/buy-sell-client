@@ -11,6 +11,7 @@ const Product = ({ product, setProduct }) => {
     orgPrice,
     location,
     used,
+    verified,
   } = product;
   return (
     <div>
@@ -29,7 +30,7 @@ const Product = ({ product, setProduct }) => {
               {name}
             </p>
             <span className="text-xs font-medium text-blue-600  dark:text-blue-400">
-              Resale: ${resalePrice} | Original Price: ${orgPrice}
+              Resale Price: ${resalePrice} | Original Price: ${orgPrice}
             </span>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               This product is used for: {used}
@@ -37,26 +38,28 @@ const Product = ({ product, setProduct }) => {
           </div>
 
           <div className="mt-4">
-            <div className="flex items-center flex-wrap">
-              <div className="flex items-center">
-                <img
-                  className="object-cover h-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
-                  alt="Avatar"
-                />
+            <div className="flex flex-col justify-center flex-wrap">
+              <div className="flex">
                 <Link
-                  className="mx-2 font-semibold text-gray-700 dark:text-gray-200"
+                  className="m-1 font-semibold text-gray-700 dark:text-gray-200"
                   role="link"
                 >
                   {seller}
                 </Link>
+                {verified && (
+                  <p className="btn btn-xs rounded-full py-1 btn-info text-white mr-3">
+                    ✓
+                  </p>
+                )}
               </div>
-              <span className="mx-1 py-1 text-xs text-gray-600 dark:text-gray-300">
-                {post_time}
-              </span>
-              <span className="mx-1 py-1 text-xs text-gray-600 dark:text-gray-300">
-                {location}
-              </span>
+              <div className="flex flex-wrap">
+                <span className="mx-1 py-1 text-xs text-gray-600 dark:text-gray-300">
+                  Posted at: {post_time}
+                </span>
+                <span className="mx-1 py-1 text-xs text-gray-600 dark:text-gray-300">
+                  Location: {location}
+                </span>
+              </div>
             </div>
           </div>
           <div className="my-3">
