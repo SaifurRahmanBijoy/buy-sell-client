@@ -29,7 +29,7 @@ const Home = () => {
         <div className="grid lg:grid-cols-3 gap-5">
           {categories.map((category) => (
             <Link
-              to={`/category/${category._id}`}
+              to={`/category/${category.category_id}`}
               key={category._id}
               className="btn btn-accent btn-outline rounded-none text-lg w-full uppercase font-semibold my-2"
             >

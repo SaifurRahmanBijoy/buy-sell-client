@@ -53,6 +53,7 @@ const BookingModal = ({ product, setProduct }) => {
         <div className="modal-box relative">
           <label
             htmlFor="booking-modal"
+            onClick={() => setProduct(null)}
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
