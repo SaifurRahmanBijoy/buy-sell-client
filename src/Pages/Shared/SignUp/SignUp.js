@@ -1,8 +1,9 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
+import useToken from "../../../hooks/useToken";
 
 const SignUp = () => {
   const {
@@ -13,6 +14,17 @@ const SignUp = () => {
   const { createUser, updateUser, providerLogin } = useContext(AuthContext);
   const [signUpError, setSignUPError] = useState("");
   const [createdUserEmail, setCreatedUserEmail] = useState("");
+
+  // new
+  const [token] = useToken(createdUserEmail);
+  // const location = useLocation();
+  const navigate = useNavigate();
+  // const from = location.state?.from?.pathname || "/";
+
+  // if token found
+  if (token) {
+    navigate("/");
+  }
 
   const handleSignUp = (data) => {
     setSignUPError("");
