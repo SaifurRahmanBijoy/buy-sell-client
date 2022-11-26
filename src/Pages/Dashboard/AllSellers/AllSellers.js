@@ -29,6 +29,25 @@ const AllSellers = () => {
         });
     }
   };
+  const handleVerify = (_id) => {
+    const proceed = window.confirm("Are you sure?");
+    if (proceed) {
+      fetch(`http://localhost:5000/user/${_id}`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.modifiedCount > 0) {
+            toast.success("A Seller is verified");
+            refetch();
+          }
+        });
+    }
+  };
   return (
     <div className="bg-slate-500 p-4 min-h-screen lg:p-10">
       <h2 className="text-2xl text-slate-200 mb-4 pl-2 uppercase">
@@ -42,6 +61,7 @@ const AllSellers = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Delete</th>
+              <th>verify</th>
             </tr>
           </thead>
           <tbody>
@@ -50,14 +70,25 @@ const AllSellers = () => {
                 <th>{i + 1}</th>
                 <td>{seller.name ? seller.name : "Unknown"}</td>
                 <td>{seller.email}</td>
-
                 <td>
                   <button
                     onClick={() => handleDelete(seller._id)}
                     className="btn rounded-sm btn-sm btn-error text-yellow-50"
                   >
-                    Delete
+                    delete
                   </button>
+                </td>
+                <td>
+                  {seller.verified ? (
+                    <p className="text-accent">Verified</p>
+                  ) : (
+                    <button
+                      onClick={() => handleVerify(seller._id)}
+                      className="btn rounded-sm btn-sm btn-success text-yellow-50"
+                    >
+                      verify
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

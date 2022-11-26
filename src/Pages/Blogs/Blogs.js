@@ -40,14 +40,11 @@ const Blogs = () => {
         <p className="text-sm text-justify">
           Essentially, a unit test is a method that instantiates a small portion
           of a application and verifies its behavior independently from other
-          parts. A typical unit test contains 3 phases: First, it initializes a
-          small piece of an application it wants to test (also known as the
-          system under test, or SUT), then it applies some stimulus to the
-          system under test (usually by calling a method on it), and finally, it
-          observes the resulting behavior. If the observed behavior is
-          consistent with the expectations, the unit test passes, otherwise, it
-          fails, indicating that there is a problem somewhere in the system
-          under test.
+          parts. Unit testing for React Apps means testing an individual React
+          Component. Unit Testing is important for React Apps, as it helps in
+          testing the individual functionality of React components. Moreover,
+          any error in code can be identified at the beginning itself, saving
+          time to rectify it at later stages.
         </p>
       </div>
       <div className="shadow-lg m-2 lg:m-5 p-6 bg-slate-600 rounded-lg">
