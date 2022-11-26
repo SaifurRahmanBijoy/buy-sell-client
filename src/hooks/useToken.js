@@ -10,7 +10,7 @@ const useToken = (email) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.accessToken) {
-            console.log("data.acc in hook:", data);
+            // console.log("data.acc in hook:", data);
             localStorage.setItem("accessToken", data.accessToken);
             setToken(data.accessToken);
             // navigate("/");

@@ -19,7 +19,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || "/";
-  
+
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const [token] = useToken(loginUserEmail);
 
@@ -27,13 +27,27 @@ const Login = () => {
     navigate(from, { replace: true });
   }
 
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLoginUserEmail(email);
+      });
+  };
+
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((res) => {
         const user = res.user;
-        console.log(user);
-        setLoginUserEmail(user.email);
-        // navigate(from, { replace: true });
+        saveUser(user.displayName, user.email, "buyer");
+        navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));
   };
@@ -45,7 +59,6 @@ const Login = () => {
         const user = res.user;
         console.log(user);
         setLoginUserEmail(data.email);
-        // navigate(from, { replace: true });
       })
       .catch((e) => {
         console.error(e.message);

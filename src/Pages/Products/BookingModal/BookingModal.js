@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const BookingModal = ({ product, setProduct }) => {
+  const { user } = useContext(AuthContext);
   const { name, resalePrice, img } = product;
 
   const handleBooking = (event) => {
@@ -21,8 +24,27 @@ const BookingModal = ({ product, setProduct }) => {
       userName,
       userEmail,
     };
+
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          setProduct(null);
+          toast.success("Booking confirmed");
+        } else {
+          toast.error(data.message);
+        }
+      });
+
     console.log(booking);
-    setProduct(null);
   };
   return (
     <>
@@ -41,7 +63,7 @@ const BookingModal = ({ product, setProduct }) => {
             onSubmit={handleBooking}
             className="grid grid-cols-1 gap-3 mt-10"
           >
-            <label className="text-xs">Price</label>
+            <label className="text-xs">Price in USD</label>
             <input
               name="price"
               type="text"
@@ -68,7 +90,7 @@ const BookingModal = ({ product, setProduct }) => {
               type="text"
               disabled
               placeholder="Your Name"
-              //   defaultValue={user?.displayName}
+              defaultValue={user?.displayName}
               className="input w-full input-bordered"
             />
             <input
@@ -76,7 +98,7 @@ const BookingModal = ({ product, setProduct }) => {
               type="text"
               disabled
               placeholder="Your Email"
-              //   defaultValue={user?.email}
+              defaultValue={user?.email}
               className="input w-full input-bordered"
             />
             <br />
