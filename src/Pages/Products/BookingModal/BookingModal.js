@@ -1,7 +1,7 @@
 import React from "react";
 
 const BookingModal = ({ product, setProduct }) => {
-  const { name, resalePrice } = product;
+  const { name, resalePrice,img } = product;
 
   const handleBooking = (event) => {
     event.preventDefault();
@@ -14,6 +14,7 @@ const BookingModal = ({ product, setProduct }) => {
 
     const booking = {
       price: productPrice,
+      productImg:img,
       productName: name,
       userLocation: location,
       userPhone: phone,

@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((e) => console.log(e));
+  };
   const menuItems = (
     <>
       <li>
@@ -16,6 +23,20 @@ const Navbar = () => {
       <li>
         <Link to="/blogs">Blogs</Link>
       </li>
+      {user?.uid ? (
+        <>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <button onClick={handleLogOut}>Sign Out</button>
+          </li>
+        </>
+      ) : (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
     </>
   );
   return (
@@ -50,7 +71,9 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center btn btn-ghost text-xl animate-pulse">
-        <h2 className="hidden normal-case lg:flex text-sm text-yellow-300">Offers on laptops!</h2>
+        <h2 className="hidden normal-case lg:flex text-sm text-yellow-300">
+          Offers on laptops!
+        </h2>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
