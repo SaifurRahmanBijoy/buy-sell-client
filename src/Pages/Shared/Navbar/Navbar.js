@@ -12,15 +12,6 @@ const Navbar = () => {
   const menuItems = (
     <>
       <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/">About</Link>
-      </li>
-      <li>
-        <Link to="/">Products</Link>
-      </li>
-      <li>
         <Link to="/blogs">Blogs</Link>
       </li>
       {user?.uid ? (
@@ -77,6 +68,15 @@ const Navbar = () => {
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
+      </div>
+      <div className="lg:hidden navbar-end">
+        <label
+          htmlFor="dashboard-drawer"
+          tabIndex={2}
+          className="btn btn-ghost lg:hidden"
+        >
+          ⬇
+        </label>
       </div>
     </div>
   );
