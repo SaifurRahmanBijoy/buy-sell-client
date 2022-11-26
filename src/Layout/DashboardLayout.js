@@ -2,11 +2,18 @@ import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
+import useBuyer from "../hooks/useBuyer";
+import useSeller from "../hooks/useSeller";
+
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
+  const [isSeller] = useSeller(user?.email);
+  const [isBuyer] = useBuyer(user?.email);
+  console.log(isSeller);
+
   return (
     <div>
       <Navbar></Navbar>
@@ -22,12 +29,14 @@ const DashboardLayout = () => {
         <div className="drawer-side border border-slate-700">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-slate-900 text-base-content ">
-            {user?.role === "buyer" && (
-              <li>
-                <Link to="/dashboard">My Bookings</Link>
-              </li>
+            {(isBuyer || isBuyer === true) && (
+              <>
+                <li>
+                  <Link to="/dashboard/bookings">My Bookings</Link>
+                </li>
+              </>
             )}
-            {user?.role === "seller" && (
+            {(isSeller || isSeller === true) === true && (
               <>
                 <li>
                   <Link to="/dashboard">Add a Product</Link>
@@ -40,7 +49,7 @@ const DashboardLayout = () => {
             {isAdmin && (
               <>
                 <li>
-                  <Link to="/dashboard">All Buyers</Link>
+                  <Link to="/dashboard/buyers">All Buyers</Link>
                 </li>
                 <li>
                   <Link to="/dashboard/sellers">All Sellers</Link>

@@ -4,6 +4,7 @@ import Main from "../../Layout/Main";
 import Blogs from "../../Pages/Blogs/Blogs";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
+import MyBookings from "../../Pages/Dashboard/MyBookings/MyBookings";
 import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
 import Home from "../../Pages/Home/Home/Home";
 import Products from "../../Pages/Products/Products";
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
+        element: <MyBookings></MyBookings>,
+      },
+      {
+        path: "/dashboard/buyers",
         element: (
           <AdminRoute>
             <AllBuyers></AllBuyers>
