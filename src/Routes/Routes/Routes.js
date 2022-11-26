@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard/buyers",
+        path: "/dashboard",
         element: <AllBuyers></AllBuyers>,
       },
       {
