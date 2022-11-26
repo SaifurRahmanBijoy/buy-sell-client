@@ -4,10 +4,12 @@ import Main from "../../Layout/Main";
 import Blogs from "../../Pages/Blogs/Blogs";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
+import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
 import Home from "../../Pages/Home/Home/Home";
 import Products from "../../Pages/Products/Products";
 import Login from "../../Pages/Shared/Login/Login";
 import SignUp from "../../Pages/Shared/SignUp/SignUp";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -53,11 +55,27 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: <AllBuyers></AllBuyers>,
+        element: (
+          <AdminRoute>
+            <AllBuyers></AllBuyers>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/sellers",
-        element: <AllSellers></AllSellers>,
+        element: (
+          <AdminRoute>
+            <AllSellers></AllSellers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/reportedItems",
+        element: (
+          <AdminRoute>
+            <ReportedItems></ReportedItems>
+          </AdminRoute>
+        ),
       },
     ],
   },
