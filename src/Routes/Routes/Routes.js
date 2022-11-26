@@ -8,6 +8,8 @@ import MyBookings from "../../Pages/Dashboard/MyBookings/MyBookings";
 import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
 import Home from "../../Pages/Home/Home/Home";
 import Products from "../../Pages/Products/Products";
+import Routes404 from "../../Pages/Shared/404 Routes/Routes404";
+import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import Login from "../../Pages/Shared/Login/Login";
 import SignUp from "../../Pages/Shared/SignUp/SignUp";
 import AdminRoute from "../AdminRoute/AdminRoute";
@@ -17,6 +19,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <DisplayError></DisplayError>,
     children: [
       {
         path: "/",
@@ -53,6 +56,7 @@ export const router = createBrowserRouter([
         <DashboardLayout></DashboardLayout>
       </PrivateRoute>
     ),
+    errorElement: <DisplayError></DisplayError>,
     children: [
       {
         path: "/dashboard/bookings",
@@ -83,5 +87,9 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Routes404></Routes404>,
   },
 ]);
