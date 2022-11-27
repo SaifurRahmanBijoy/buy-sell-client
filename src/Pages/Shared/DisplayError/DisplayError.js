@@ -15,7 +15,7 @@ const DisplayError = () => {
       .catch((e) => console.log(e));
   };
   return (
-    <div className="w-10/12 mx-auto flex items-start justify-center">
+    <div className="w-10/12 mx-auto min-h-screen flex flex-col items-start justify-center">
       <p className="text-error text-lg text-center">Something went wrong!</p>
       <p className="text-error text-lg text-center">
         {error?.statusText || error?.message}

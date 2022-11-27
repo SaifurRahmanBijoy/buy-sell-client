@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
   const { email } = user;
   const { data: bookings = [] } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["bookings"],
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/bookings/${email}`);
       const data = await res.json();
@@ -27,17 +28,22 @@ const MyBookings = () => {
         <tbody>
           {bookings.map((b) => (
             <tr key={b._id} className="border border-slate-700 my-2">
-              <td><img className="w-32" src={b.productImg} alt="" /></td>
+              <td>
+                <img className="w-32" src={b.productImg} alt="" />
+              </td>
               <td>{b.productName ? b.productName : "Unknown"}</td>
               <td>${b.price}</td>
 
               <td>
-                <button
-                  //   onClick={() => handleDelete(b._id)}
-                  className="btn rounded-sm btn-sm btn-accent text-yellow-50"
-                >
-                  Pay
-                </button>
+                {!b.paid ? (
+                  <Link to={`/dashboard/payment/${b._id}`}>
+                    <button className="btn rounded-sm btn-sm btn-accent text-yellow-50">
+                      Pay
+                    </button>
+                  </Link>
+                ) : (
+                  <p className="text-accent font-bold">Paid</p>
+                )}
               </td>
             </tr>
           ))}
