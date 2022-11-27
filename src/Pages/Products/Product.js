@@ -31,7 +31,7 @@ const Product = ({ product, setProduct }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.modifiedCount > 0) {
-            toast.success("A Product is Advertised");
+            toast.success("A Product is Reported");
           }
         });
     }
