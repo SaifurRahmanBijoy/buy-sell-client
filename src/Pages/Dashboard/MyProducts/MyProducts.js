@@ -5,10 +5,12 @@ import ProductSingle from "./ProductSingle";
 
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
-  const { data: myProducts = [],refetch } = useQuery({
+  const { data: myProducts = [], refetch } = useQuery({
     queryKey: ["myProducts"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/products/${user?.email}`);
+      const res = await fetch(
+        `https://buy-sell-server-sooty.vercel.app/products/${user?.email}`
+      );
       const data = await res.json();
       return data;
     },

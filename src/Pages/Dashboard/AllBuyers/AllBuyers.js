@@ -6,7 +6,9 @@ const AllBuyers = () => {
   const { data: buyers = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users/buyer");
+      const res = await fetch(
+        "https://buy-sell-server-sooty.vercel.app/users/buyer"
+      );
       const data = await res.json();
       return data;
     },
@@ -15,7 +17,7 @@ const AllBuyers = () => {
   const handleDelete = (_id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      fetch(`http://localhost:5000/users/${_id}`, {
+      fetch(`https://buy-sell-server-sooty.vercel.app/users/${_id}`, {
         method: "DELETE",
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,

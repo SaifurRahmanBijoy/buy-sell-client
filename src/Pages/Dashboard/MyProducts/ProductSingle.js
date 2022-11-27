@@ -6,7 +6,7 @@ const ProductSingle = ({ product, refetch }) => {
   const handleAdvertise = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      fetch(`http://localhost:5000/myproducts/${id}`, {
+      fetch(`https://buy-sell-server-sooty.vercel.app/myproducts/${id}`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -25,7 +25,7 @@ const ProductSingle = ({ product, refetch }) => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      fetch(`http://localhost:5000/deleteproduct/${id}`, {
+      fetch(`https://buy-sell-server-sooty.vercel.app/deleteproduct/${id}`, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",

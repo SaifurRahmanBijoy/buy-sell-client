@@ -7,7 +7,7 @@ const SingleReportedItem = ({ item, refetch }) => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      fetch(`http://localhost:5000/deleteproduct/${id}`, {
+      fetch(`https://buy-sell-server-sooty.vercel.app/deleteproduct/${id}`, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",
@@ -24,7 +24,7 @@ const SingleReportedItem = ({ item, refetch }) => {
     }
   };
   return (
-    <div className="card lg:card-side bg-base-300 shadow-xl">
+    <div className="card lg:card-side bg-base-300 shadow-xl my-5">
       <figure>
         <img
           className="shadow-lg rounded-2xl hover:animate-pulse"

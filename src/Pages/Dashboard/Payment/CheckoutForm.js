@@ -13,11 +13,11 @@ const CheckoutForm = ({ booking }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { displayName, email } = user;
-  const { _id, productName, productImg, price,p_id } = booking;
+  const { _id, productName, productImg, price, p_id } = booking;
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://buy-sell-server-sooty.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -79,10 +79,10 @@ const CheckoutForm = ({ booking }) => {
         bookingId: _id,
         img: productImg,
         name: productName,
-        p_id:p_id,
+        p_id: p_id,
       };
 
-      fetch("http://localhost:5000/payments", {
+      fetch("https://buy-sell-server-sooty.vercel.app/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",

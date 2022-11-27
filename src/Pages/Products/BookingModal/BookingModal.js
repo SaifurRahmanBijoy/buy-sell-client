@@ -26,7 +26,7 @@ const BookingModal = ({ product, setProduct }) => {
       userEmail,
     };
 
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://buy-sell-server-sooty.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

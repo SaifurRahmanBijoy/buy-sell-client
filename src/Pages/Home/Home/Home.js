@@ -13,7 +13,9 @@ const Home = () => {
   const { data: categories = [], isLoading } = useQuery({
     queryKey: ["categorisedProducts"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/categories");
+      const res = await fetch(
+        "https://buy-sell-server-sooty.vercel.app/categories"
+      );
       const data = await res.json();
       return data;
     },
@@ -22,7 +24,7 @@ const Home = () => {
   // const { data: advertisedItems = [] } = useQuery({
   //   queryKey: ["advertiseditems"],
   //   queryFn: async () => {
-  //     const res = await fetch("http://localhost:5000/advertiseditems");
+  //     const res = await fetch("https://buy-sell-server-sooty.vercel.app/advertiseditems");
   //     const data = await res.json();
   //     return data;
   //   },
@@ -31,9 +33,11 @@ const Home = () => {
    */
 
   useEffect(() => {
-    axios.get("http://localhost:5000/advertiseditems").then((response) => {
-      setAdvertisedItems(response.data);
-    });
+    axios
+      .get("https://buy-sell-server-sooty.vercel.app/advertiseditems")
+      .then((response) => {
+        setAdvertisedItems(response.data);
+      });
   }, []);
 
   if (isLoading) {
