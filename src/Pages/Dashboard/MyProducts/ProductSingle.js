@@ -22,6 +22,25 @@ const ProductSingle = ({ product, refetch }) => {
         });
     }
   };
+  const handleDelete = (id) => {
+    const proceed = window.confirm("Are you sure?");
+    if (proceed) {
+      fetch(`http://localhost:5000/deleteproduct/${id}`, {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            toast.success("A Product is Deleted");
+            refetch();
+          }
+        });
+    }
+  };
   return (
     <div className="card bg-base-300 shadow-xl">
       <figure>
@@ -46,7 +65,10 @@ const ProductSingle = ({ product, refetch }) => {
               Advertised
             </div>
           )}
-          <div className="btn btn-error btn-outline rounded-sm btn-sm">
+          <div
+            className="btn btn-error btn-outline rounded-sm btn-sm"
+            onClick={() => handleDelete(_id)}
+          >
             delete
           </div>
         </div>
