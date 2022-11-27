@@ -1,11 +1,25 @@
-import React from 'react';
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
+import ProductSingle from "./ProductSingle";
 
 const MyProducts = () => {
-    return (
-        <div>
-            <h2>MyProducts</h2>
-        </div>
-    );
+  const { user } = useContext(AuthContext);
+  const { data: myProducts = [] } = useQuery({
+    queryKey: ["myProducts"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/products/${user?.email}`);
+      const data = await res.json();
+      return data;
+    },
+  });
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 p-5 lg:p-10 gap-4">
+      {myProducts.map((p, i) => (
+        <ProductSingle key={i} product={p}></ProductSingle>
+      ))}
+    </div>
+  );
 };
 
 export default MyProducts;

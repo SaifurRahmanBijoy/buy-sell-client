@@ -31,6 +31,7 @@ const Product = ({ product, setProduct }) => {
           <div>
             <p className="mt-2 text-2xl flex font-semibold items-center transition-colors duration-300 transform text-white">
               {name}
+              <div className="badge badge-secondary">NEW</div>
             </p>
             <span className="text-xs font-medium text-blue-600  dark:text-blue-400">
               Resale Price: ${resalePrice} <br />
