@@ -32,6 +32,7 @@ const Product = ({ product, setProduct }) => {
         .then((data) => {
           if (data.modifiedCount > 0) {
             toast.success("A Product is Reported");
+            window.location.reload(false);
           }
         });
     }
