@@ -67,14 +67,15 @@ const Product = ({ product, setProduct }) => {
               </div>
             </div>
           </div>
-          <div className="my-3">
+          <div className="my-3 grid lg:grid-cols-2 gap-5">
             <label
-              className="btn btn-info btn-md w-full rounded-sm"
+              className="btn btn-info btn-md w-full rounded-sm my-2"
               htmlFor="booking-modal"
               onClick={() => setProduct(product)}
             >
               Buy Now
             </label>
+            <button className="btn btn-error btn-outline btn-md w-full rounded-sm my-2">Report This</button>
           </div>
         </div>
       </div>
