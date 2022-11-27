@@ -1,9 +1,11 @@
 import React from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import useVerified from "../../hooks/useVerified";
 
 const Product = ({ product, setProduct }) => {
   const {
+    _id,
     img,
     name,
     post_time,
@@ -13,7 +15,27 @@ const Product = ({ product, setProduct }) => {
     location,
     used,
     seller_email,
+    reported,
   } = product;
+
+  const handleReport = (id) => {
+    const proceed = window.confirm("Are you sure?");
+    if (proceed) {
+      fetch(`http://localhost:5000/report/${id}`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.modifiedCount > 0) {
+            toast.success("A Product is Advertised");
+          }
+        });
+    }
+  };
 
   const [isVerified] = useVerified(seller_email);
   return (
@@ -75,7 +97,18 @@ const Product = ({ product, setProduct }) => {
             >
               Buy Now
             </label>
-            <button className="btn btn-error btn-outline btn-md w-full rounded-sm my-2">Report This</button>
+            {reported ? (
+              <div className="flex items-center text-red-300 text-center">
+                <p>Reported Once by a User</p>
+              </div>
+            ) : (
+              <button
+                onClick={() => handleReport(_id)}
+                className="btn btn-error btn-outline btn-md w-full rounded-sm my-2"
+              >
+                Report This
+              </button>
+            )}
           </div>
         </div>
       </div>
