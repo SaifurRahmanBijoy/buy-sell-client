@@ -5,7 +5,7 @@ import ProductSingle from "./ProductSingle";
 
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
-  const { data: myProducts = [] } = useQuery({
+  const { data: myProducts = [],refetch } = useQuery({
     queryKey: ["myProducts"],
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/products/${user?.email}`);
@@ -16,7 +16,7 @@ const MyProducts = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 p-5 lg:p-10 gap-4">
       {myProducts.map((p, i) => (
-        <ProductSingle key={i} product={p}></ProductSingle>
+        <ProductSingle key={i} product={p} refetch={refetch}></ProductSingle>
       ))}
     </div>
   );
