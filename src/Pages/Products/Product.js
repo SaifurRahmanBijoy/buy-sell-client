@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useVerified from "../../hooks/useVerified";
 
 const Product = ({ product, setProduct }) => {
-
   const {
     img,
     name,
@@ -12,8 +12,10 @@ const Product = ({ product, setProduct }) => {
     orgPrice,
     location,
     used,
-    verified,
+    seller_email,
   } = product;
+
+  const [isVerified] = useVerified(seller_email);
   return (
     <div>
       <div className="overflow-hidden rounded-lg shadow-2xl bg-gray-800 w-11/12 mx-auto">
@@ -47,7 +49,7 @@ const Product = ({ product, setProduct }) => {
                 >
                   {seller}
                 </Link>
-                {verified && (
+                {isVerified && (
                   <p className="btn btn-xs rounded-full py-1 btn-info text-white mr-3">
                     ✓
                   </p>
