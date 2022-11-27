@@ -1,12 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../Shared/Loading/Loading";
 import AdvertisedItems from "../AdvertisedItems/AdvertisedItems";
 import ExtraSection from "../ExtraSection/ExtraSection";
 import Slider from "../Slider/Slider";
 
+import axios from "axios";
+
 const Home = () => {
+  const [advertisedItems, setAdvertisedItems] = useState();
   const { data: categories = [], isLoading } = useQuery({
     queryKey: ["categorisedProducts"],
     queryFn: async () => {
@@ -16,14 +19,22 @@ const Home = () => {
     },
   });
 
-  const { data: advertisedItems = [] } = useQuery({
-    queryKey: ["advertiseditems"],
-    queryFn: async () => {
-      const res = await fetch("http://localhost:5000/advertiseditems");
-      const data = await res.json();
-      return data;
-    },
-  });
+  // const { data: advertisedItems = [] } = useQuery({
+  //   queryKey: ["advertiseditems"],
+  //   queryFn: async () => {
+  //     const res = await fetch("http://localhost:5000/advertiseditems");
+  //     const data = await res.json();
+  //     return data;
+  //   },
+  // });
+  /*
+   */
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/advertiseditems").then((response) => {
+      setAdvertisedItems(response.data);
+    });
+  }, []);
 
   if (isLoading) {
     return <Loading></Loading>;
