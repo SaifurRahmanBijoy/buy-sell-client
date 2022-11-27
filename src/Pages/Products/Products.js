@@ -15,7 +15,7 @@ const Products = () => {
         {/* <span className="text-yellow-300 uppercase">{name}</span> */}
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 p-5">
-        {products.map((p, i) => (
+        {products.filter(prod=>!prod.paid).map((p, i) => (
           <Product key={i} product={p} setProduct={setProduct}></Product>
         ))}
       </div>
