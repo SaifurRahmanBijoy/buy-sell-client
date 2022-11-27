@@ -33,7 +33,8 @@ const Product = ({ product, setProduct }) => {
               {name}
             </p>
             <span className="text-xs font-medium text-blue-600  dark:text-blue-400">
-              Resale Price: ${resalePrice} | Original Price: ${orgPrice}
+              Resale Price: ${resalePrice} <br />
+              {orgPrice && <>Original Price: ${orgPrice}</>}
             </span>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               This product is used for: {used}
@@ -57,7 +58,7 @@ const Product = ({ product, setProduct }) => {
               </div>
               <div className="flex flex-wrap">
                 <span className="mx-1 py-1 text-xs text-gray-600 dark:text-gray-300">
-                  Posted at: {post_time}
+                  {post_time && <>Posted at: {post_time}</>}
                 </span>
                 <span className="mx-1 py-1 text-xs text-gray-600 dark:text-gray-300">
                   Location: {location}

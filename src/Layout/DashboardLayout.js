@@ -38,10 +38,10 @@ const DashboardLayout = () => {
             {(isSeller || isSeller === true) === true && (
               <>
                 <li>
-                  <Link to="/dashboard">Add a Product</Link>
+                  <Link to="/dashboard/addproduct">Add a Product</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard">My Products</Link>
+                  <Link to="/dashboard/myproducts">My Products</Link>
                 </li>
               </>
             )}
