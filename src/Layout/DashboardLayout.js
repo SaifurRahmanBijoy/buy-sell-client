@@ -25,9 +25,9 @@ const DashboardLayout = () => {
         <div className="drawer-content">
           <Outlet></Outlet>
         </div>
-        <div className="drawer-side border border-slate-700">
+        <div className="drawer-side border m-3 rounded-3xl border-slate-700">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 bg-slate-900 text-base-content ">
+          <ul className="menu p-4 w-80 bg-slate-900 font-semibold text-slate-300 text-lg">
             {(isBuyer || isBuyer === true) && (
               <>
                 <li>

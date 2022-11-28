@@ -4,7 +4,7 @@ import "./Slider.css";
 const Slider = () => {
   const sliderText = <></>;
   return (
-    <div className="carousel lg:w-7/12 lg:mx-auto my-5 md:my-8 lg:my-12 rounded-xl">
+    <div className="carousel lg:w-7/12 mx-2 lg:mx-auto my-5 md:my-8 lg:my-12 rounded-xl">
       <div id="slide1" className="carousel-item relative w-full">
         <div className="gradient">
           <img
