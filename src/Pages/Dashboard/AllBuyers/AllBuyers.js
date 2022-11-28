@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import toast from "react-hot-toast";
+import Loading from "../../Shared/Loading/Loading";
 
 const AllBuyers = () => {
-  const { data: buyers = [], refetch } = useQuery({
+  const { data: buyers = [], refetch,isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await fetch(
@@ -32,6 +33,9 @@ const AllBuyers = () => {
         });
     }
   };
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <div className="bg-slate-500 p-4 min-h-screen lg:p-10">
       <h2 className="text-2xl text-slate-200 mb-4 pl-2 uppercase">

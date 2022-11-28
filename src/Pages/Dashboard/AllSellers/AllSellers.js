@@ -1,9 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import toast from "react-hot-toast";
+import Loading from "../../Shared/Loading/Loading";
 
 const AllSellers = () => {
-  const { data: sellers = [], refetch } = useQuery({
+  const {
+    data: sellers = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await fetch(
@@ -31,6 +36,9 @@ const AllSellers = () => {
         });
     }
   };
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   const handleVerify = (_id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
