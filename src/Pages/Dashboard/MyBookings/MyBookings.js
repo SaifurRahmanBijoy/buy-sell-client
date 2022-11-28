@@ -7,11 +7,11 @@ import Loading from "../../Shared/Loading/Loading";
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
   const { email } = user;
-  const { data: bookings = [],isLoading } = useQuery({
+  const { data: bookings = [], isLoading } = useQuery({
     queryKey: ["bookings"],
     queryFn: async () => {
       const res = await fetch(
-        `https://buy-sell-server-sooty.vercel.app/bookings/${email}`,
+        `https://buy-sell-server-saifurrahmanbijoy.vercel.app/bookings/${email}`,
         {
           headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`,

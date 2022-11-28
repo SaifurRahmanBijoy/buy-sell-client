@@ -17,14 +17,17 @@ const CheckoutForm = ({ booking }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("https://buy-sell-server-sooty.vercel.app/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify({ price }),
-    })
+    fetch(
+      "https://buy-sell-server-saifurrahmanbijoy.vercel.app/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ price }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [price]);
@@ -82,7 +85,7 @@ const CheckoutForm = ({ booking }) => {
         p_id: p_id,
       };
 
-      fetch("https://buy-sell-server-sooty.vercel.app/payments", {
+      fetch("https://buy-sell-server-saifurrahmanbijoy.vercel.app/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",

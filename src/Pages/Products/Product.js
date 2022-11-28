@@ -21,13 +21,16 @@ const Product = ({ product, setProduct }) => {
   const handleReport = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      fetch(`https://buy-sell-server-sooty.vercel.app/report/${id}`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://buy-sell-server-saifurrahmanbijoy.vercel.app/report/${id}`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.modifiedCount > 0) {

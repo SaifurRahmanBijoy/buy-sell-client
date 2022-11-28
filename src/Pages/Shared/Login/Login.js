@@ -29,7 +29,7 @@ const Login = () => {
 
   const saveUser = (name, email, role) => {
     const user = { name, email, role };
-    fetch("https://buy-sell-server-sooty.vercel.app/users", {
+    fetch("https://buy-sell-server-saifurrahmanbijoy.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

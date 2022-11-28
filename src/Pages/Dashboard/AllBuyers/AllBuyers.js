@@ -4,11 +4,15 @@ import toast from "react-hot-toast";
 import Loading from "../../Shared/Loading/Loading";
 
 const AllBuyers = () => {
-  const { data: buyers = [], refetch,isLoading } = useQuery({
+  const {
+    data: buyers = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await fetch(
-        "https://buy-sell-server-sooty.vercel.app/users/buyer"
+        "https://buy-sell-server-saifurrahmanbijoy.vercel.app/users/buyer"
       );
       const data = await res.json();
       return data;
@@ -18,12 +22,15 @@ const AllBuyers = () => {
   const handleDelete = (_id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      fetch(`https://buy-sell-server-sooty.vercel.app/users/${_id}`, {
-        method: "DELETE",
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://buy-sell-server-saifurrahmanbijoy.vercel.app/users/${_id}`,
+        {
+          method: "DELETE",
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {

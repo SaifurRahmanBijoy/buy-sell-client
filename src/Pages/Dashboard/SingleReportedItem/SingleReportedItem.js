@@ -7,13 +7,16 @@ const SingleReportedItem = ({ item, refetch }) => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      fetch(`https://buy-sell-server-sooty.vercel.app/deleteproduct/${id}`, {
-        method: "DELETE",
-        headers: {
-          "content-type": "application/json",
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://buy-sell-server-saifurrahmanbijoy.vercel.app/deleteproduct/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {

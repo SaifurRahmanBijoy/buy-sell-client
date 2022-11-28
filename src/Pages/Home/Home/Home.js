@@ -10,11 +10,12 @@ import axios from "axios";
 
 const Home = () => {
   const [advertisedItems, setAdvertisedItems] = useState();
+  // console.log(advertisedItems)
   const { data: categories = [], isLoading } = useQuery({
     queryKey: ["categorisedProducts"],
     queryFn: async () => {
       const res = await fetch(
-        "https://buy-sell-server-sooty.vercel.app/categories"
+        "https://buy-sell-server-saifurrahmanbijoy.vercel.app/categories"
       );
       const data = await res.json();
       return data;
@@ -24,7 +25,7 @@ const Home = () => {
   // const { data: advertisedItems = [] } = useQuery({
   //   queryKey: ["advertiseditems"],
   //   queryFn: async () => {
-  //     const res = await fetch("https://buy-sell-server-sooty.vercel.app/advertiseditems");
+  //     const res = await fetch("https://buy-sell-server-saifurrahmanbijoy.vercel.app/advertiseditems");
   //     const data = await res.json();
   //     return data;
   //   },
@@ -33,11 +34,9 @@ const Home = () => {
    */
 
   useEffect(() => {
-    axios
-      .get("https://buy-sell-server-sooty.vercel.app/advertiseditems")
-      .then((response) => {
-        setAdvertisedItems(response.data);
-      });
+    axios.get("https://buy-sell-server-saifurrahmanbijoy.vercel.app/advertiseditems").then((response) => {
+      setAdvertisedItems(response.data);
+    });
   }, []);
 
   if (isLoading) {
@@ -47,17 +46,15 @@ const Home = () => {
     <div>
       <Slider></Slider>
 
-      {advertisedItems && (
+      {advertisedItems?.length !== 0 && (
         <div className=" p-5 lg:p-10 lg:w-3/5 mx-auto bg-base-200 my-10 shadow-xl rounded-xl">
           <h2 className="text-xl lg:text-3xl text-center font-semibold my-4">
             Advertised Products
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {advertisedItems
-              .filter((i) => !i.paid)
-              .map((item, i) => (
-                <AdvertisedItems key={i} item={item}></AdvertisedItems>
-              ))}
+            {advertisedItems?.map((item, i) => (
+              <AdvertisedItems key={i} item={item}></AdvertisedItems>
+            ))}
           </div>
         </div>
       )}

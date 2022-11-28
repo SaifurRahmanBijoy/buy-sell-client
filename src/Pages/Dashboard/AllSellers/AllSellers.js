@@ -12,7 +12,7 @@ const AllSellers = () => {
     queryKey: ["users"],
     queryFn: async () => {
       const res = await fetch(
-        "https://buy-sell-server-sooty.vercel.app/users/seller"
+        "https://buy-sell-server-saifurrahmanbijoy.vercel.app/users/seller"
       );
       const data = await res.json();
       return data;
@@ -21,12 +21,15 @@ const AllSellers = () => {
   const handleDelete = (_id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      fetch(`https://buy-sell-server-sooty.vercel.app/users/${_id}`, {
-        method: "DELETE",
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://buy-sell-server-saifurrahmanbijoy.vercel.app/users/${_id}`,
+        {
+          method: "DELETE",
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {
@@ -42,13 +45,16 @@ const AllSellers = () => {
   const handleVerify = (_id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      fetch(`https://buy-sell-server-sooty.vercel.app/user/${_id}`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://buy-sell-server-saifurrahmanbijoy.vercel.app/user/${_id}`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.modifiedCount > 0) {
